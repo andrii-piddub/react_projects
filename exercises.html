@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Chatbot</title>
+    <style>
+      body{
+        margin-top: 0;
+        margin-bottom: 0;
+      }
+      .button-container {
+        background-color: rgb(25, 135, 84);
+        color:white;
+
+      }
+      .total-buttons-container {
+        height: 100vh;
+        display:flex;
+        justify-content: center;
+        background-color: rgb(222, 222, 222);
+        align-items: center;
+      }
+    </style>
+    
+  </head>
+  <body>
+    <div class="js-container"></div>
+
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+    <script src="https://unpkg.com/supersimpledev/dayjs.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script type="text/babel">
+      function App () {
+        const [time, setTime] = React.useState(dayjs().format('HH:mm:ss'))
+        React.useEffect (()=>{
+          setInterval(()=>{
+            console.log('run code')
+            setTime(dayjs().format('HH:mm:ss'));
+          },1000);
+        },[]);
+        const [counter, setCounter] = React.useState(0)
+        const buttonRef = React.useRef(null)
+        return (
+          <>
+          <p>Current time: {time}</p>
+          <div className='total-buttons-container'>
+          <button className='button-container' ref={buttonRef} onClick={()=>{setCounter(counter+1)}}>Clicked {counter} times</button>
+          <button className='button-container' onClick={()=>{setCounter(0)}}>Reset</button>
+          <button className='button-container' onClick={()=>{setInterval(()=>{buttonRef.current.click();},1000);}}>AutoClick</button>
+          </div>
+          </>
+        )
+
+      }
+      
+      const container = document.querySelector('.js-container');
+      const root = ReactDOM.createRoot(container);
+      root.render(<App />);
+
+    </script>
+  </body>
+</html>
