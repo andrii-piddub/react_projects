@@ -3,19 +3,20 @@
   <head>
     <title>Chatbot</title>
     <style>
-      body{
-        margin-top: 0;
-        margin-bottom: 0;
+      .body {
+        margin-top: 0px;;
+        margin-bottom: 0px;
       }
       .button-container {
         background-color: rgb(25, 135, 84);
-        color:white;
-
+        color: white;
+        margin-left: 10px;
+        height: 25px;
       }
-      .total-buttons-container {
-        height: 100vh;
+      .buttons-container {
         display:flex;
         justify-content: center;
+        height: 100vh;
         background-color: rgb(222, 222, 222);
         align-items: center;
       }
@@ -32,29 +33,19 @@
 
     <script src="https://unpkg.com/supersimpledev/babel.js"></script>
     <script type="text/babel">
-      function App () {
-        const [time, setTime] = React.useState(dayjs().format('HH:mm:ss'))
-        React.useEffect (()=>{
-          setInterval(()=>{
-            console.log('run code')
-            setTime(dayjs().format('HH:mm:ss'));
-          },1000);
-        },[]);
-        const [counter, setCounter] = React.useState(0)
-        const buttonRef = React.useRef(null)
-        return (
-          <>
-          <p>Current time: {time}</p>
-          <div className='total-buttons-container'>
-          <button className='button-container' ref={buttonRef} onClick={()=>{setCounter(counter+1)}}>Clicked {counter} times</button>
-          <button className='button-container' onClick={()=>{setCounter(0)}}>Reset</button>
-          <button className='button-container' onClick={()=>{setInterval(()=>{buttonRef.current.click();},1000);}}>AutoClick</button>
-          </div>
-          </>
-        )
 
-      }
-      
+      function App () {
+        const [counter, setCounter] = React.useState(0)
+        const buttonRef = React.useRef();
+        return (
+        <div className={'buttons-container'}>
+        <button className={'button-container'} ref={buttonRef} onClick={()=>{setCounter(counter+1)}}>Clicked {counter} times</button>
+        <button className={'button-container'} onClick={()=>{setCounter(0)}}>Reset</button>
+        <button className={'button-container'} onClick={()=>{setInterval(()=>{buttonRef.current.click()},1000)}}>Auto Click</button>
+
+        </div>
+        )
+      } 
       const container = document.querySelector('.js-container');
       const root = ReactDOM.createRoot(container);
       root.render(<App />);
