@@ -1,6 +1,6 @@
 import {Routes, Route} from 'react-router'
 import {HomePage} from './pages/HomePage'
-import { ChecoutPage } from './pages/CheckoutPage'
+import { ChecoutPage } from './pages/checkout/CheckoutPage'
 import {OrdersPage} from './pages/OrdersPage'
 import './App.css'
 
