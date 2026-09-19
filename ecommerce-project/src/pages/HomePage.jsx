@@ -4,6 +4,12 @@ import './HomePage.css'
 import CheckmarkIcon from '../assets/images/icons/checkmark.png';
 
 export function HomePage() {
+  fetch('http://localhost:3000/api/products')
+    .then((response) => {
+      return response.json();
+    }).then((data) => {
+      console.log(data);
+    });
   return (
     <>
       <Header />
@@ -34,7 +40,7 @@ export function HomePage() {
                 </div>
 
                 <div className="product-price">
-                  ${(product.priceCents/100).toFixed(2)}
+                  ${(product.priceCents / 100).toFixed(2)}
                 </div>
 
                 <div className="product-quantity-container">
