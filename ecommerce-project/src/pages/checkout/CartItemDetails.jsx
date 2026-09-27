@@ -3,10 +3,8 @@ import { formatMoney } from '../../utils/money'
 export function CartItemDetails({ cartItem }) {
   return (
     <Fragment>
-      <div className="cart-item-details-grid">
         <img className="product-image"
           src={cartItem.product.image} />
-      </div>
       <div className="cart-item-details">
         <div className="product-name">
           {cartItem.product.name}
